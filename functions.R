@@ -1,0 +1,71 @@
+filtroEtiquetasDHIME = function(id,labelId) {
+  selectInput(id,
+              label = labelId,
+              choices = c("PTPM_CON" = "PTPM_CON",
+                          "TMX_CON" = "TMX_CON",
+                          "TMN_CON" = "TMN_CON",
+                          "NVLM_CON" = "NVLM_CON",
+                          "CAUDAL_H" = "CAUDAL_H",
+                          "TSSM_MEDIA_D" = "TSSM_MEDIA_D",
+                          "TSSM_CON" = "TSSM_CON",
+                          "THSM_CON" = "THSM_CON",
+                          "BSHG_CON" = "BSHG_CON",
+                          "EVTE_CON" = "EVTE_CON",
+                          "RCAM_CON" = "RCAM_CON",
+                          "Q_MEDIA_D" = "Q_MEDIA_D",
+                          "NIVEL_H" = "NIVEL_H"
+              ))
+}
+
+filtroAnios = function(id,labelId) {
+  selectInput(id,
+              label = labelId,
+              choices = c("2010" = 2010,"2011" = 2011,
+                          "2012" = 2012,"2013" = 2013,
+                          "2014" = 2014,"2015" = 2015,
+                          "2016" = 2016,"2017" = 2017,
+                          "2018" = 2018,"2019" = 2019,
+                          "2020" = 2020,"2021" = 2021))
+}
+
+filtroV1AreasOperativas = function(id,labelId) {
+  selectInput(id,
+              label = labelId,
+              choices = c("Area Operativa 01" = "Area Operativa 01",
+                          "Area Operativa 02" = "Area Operativa 02",
+                          "Area Operativa 03" = "Area Operativa 03",
+                          "Area Operativa 04" = "Area Operativa 04",
+                          "Area Operativa 05" = "Area Operativa 05",
+                          "Area Operativa 06" = "Area Operativa 06",
+                          "Area Operativa 07" = "Area Operativa 07",
+                          "Area Operativa 08" = "Area Operativa 08",
+                          "Area Operativa 09" = "Area Operativa 09",
+                          "Area Operativa 10" = "Area Operativa 10",
+                          "Area Operativa 11" = "Area Operativa 11"))
+}
+
+botonAyuda = function(id) {
+  div(useShinyalert(), # Set up shinyalert
+      actionButton(id, strong("Ayuda"),icon('question-circle'),style="color: #1C2322; background-color: #3BE6C4; border-color: #18BC9C"))
+} 
+
+setDownTable = function(idText,idTable,idDownload,titleStatic = FALSE) {
+  if (isTRUE(titleStatic)) {titleTable = idText} else {titleTable = strong(textOutput(idText))}
+  fluidRow(
+    h4(titleTable, align = "center"),
+    div(dataTableOutput(idTable),style = "font-size:70%"),
+    downloadButton(idDownload)
+  )
+}
+
+
+downloadButtonTable = function(tablaTemp) {
+  downloadHandler(
+    filename = function() {
+      paste0("descarga_", Sys.Date(), ".csv", sep="")
+    },
+    content = function(file) {
+      write.csv(tablaTemp, file,row.names = F)
+    }
+  )
+}
