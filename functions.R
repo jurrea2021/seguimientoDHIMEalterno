@@ -44,6 +44,23 @@ filtroV1AreasOperativas = function(id,labelId) {
                           "Area Operativa 11" = "Area Operativa 11"))
 }
 
+
+filtroV2AreasOperativas = function(id,labelId) {
+  selectInput(id,
+              label = labelId,
+              choices = c("Area Operativa 01" = "Area Operativa 01 - Antioquia-Chocó",
+                          "Area Operativa 02" = "Area Operativa 02 - Atlántico-Bolivar-Sucre",
+                          "Area Operativa 03" = "Area Operativa 03 - Meta-Guaviare-Guainía",
+                          "Area Operativa 04" = "Area Operativa 04 - Huila-Caquetá" ,
+                          "Area Operativa 05" = "Area Operativa 05 - Magdalena-Cesar-Guajira",
+                          "Area Operativa 06" = "Area Operativa 06 - Boyacá-Casanare-Vichada",
+                          "Area Operativa 07" = "Area Operativa 07 - Nariño-Putumayo",
+                          "Area Operativa 08" = "Area Operativa 08 - Santanderes-Arauca",
+                          "Area Operativa 09" = "Area Operativa 09 - Cauca-Valle-Caldas",
+                          "Area Operativa 10" = "Area Operativa 10 - Tolima",
+                          "Area Operativa 11" = "Area Operativa 11 - Cundinamarca-Amazonas-San Andrés"))
+}
+
 botonAyuda = function(id) {
   div(useShinyalert(), # Set up shinyalert
       actionButton(id, strong("Ayuda"),icon('question-circle'),style="color: #1C2322; background-color: #3BE6C4; border-color: #18BC9C"))
